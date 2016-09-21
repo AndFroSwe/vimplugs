@@ -1,6 +1,14 @@
 """ Portable vimrc with plugins. """
 """ To use, add "so ~/vimplugs/.vimrc
 
+" Special actions needed to import from git if running on windows. OBS!
+" Requires PowerShell!
+function! GetVundleWin()
+    !mkdir "~/.vim/bundle/"
+    !cd "~/.vim/bundle/"
+    !git clone https://github.com/VundleVim/Vundle.vim.git 
+endfunction
+
 "If vundle does not exist, download it
 function! GetVundle()
     echo "Checking for Vundle..."
@@ -9,7 +17,12 @@ function! GetVundle()
     else
         echo "Vundle does not exist, attempting to clone from Git..."
         " Clone git repo in shell
-        !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        " If windows
+        if has("win32")
+            exec GetVundleWin()
+        else " If on unix
+            !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        endif
         echo "Done! Run command [PluginInstall] to use your bundles!"
     endif
 endfunction
