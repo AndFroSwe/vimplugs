@@ -52,6 +52,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'lervag/vimtex'
 Plugin 'shougo/neocomplete.vim'
 Plugin 'raimondi/delimitmate'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
