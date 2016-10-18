@@ -43,7 +43,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'honza/vim-snippets'
-Plugin 'SirVer/Ultisnips'
+"Plugin 'SirVer/Ultisnips' " Comment this out if you intend to use utf8 encoding on a windows machine
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
@@ -52,6 +52,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'lervag/vimtex'
 Plugin 'shougo/neocomplete.vim'
 Plugin 'raimondi/delimitmate'
+Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,9 +67,17 @@ let g:tagbar_autopreview = 1 " Always see the preview of a tag
 noremap <leader>at :TagbarOpen<CR>
 
 "" Vimtex ""
-let g:vimtex_view_method = 'mupdf'
-let g:vimtex_viewer_mupdf = 1
-let g:tex_flavor = 'latex'
+let g:tex_flavor = 'latex' " Ensure proper Latex filetype
+if has("win32")
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+    let g:vimtex_view_general_options 
+                \ = '-reuse-instance -forward-search @tex @line @pdf'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+    let g:vimtex_latexmk_progname = "vim"
+else
+    let g:vimtex_view_method = 'mupdf'
+    let g:vimtex_viewer_mupdf = 1
+endif
 
 "" Airline ""
 let g:airline_powerline_fonts=1
