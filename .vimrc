@@ -52,6 +52,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'lervag/vimtex'
 Plugin 'shougo/neocomplete.vim'
 Plugin 'raimondi/delimitmate'
+Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
@@ -118,6 +119,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Enable c++11 features
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 """ Delimitmate """
 let delimitMate_expand_cr = 1
