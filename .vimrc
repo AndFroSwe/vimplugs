@@ -11,10 +11,7 @@ endfunction
 
 "If vundle does not exist, download it
 function! GetVundle()
-    echo "Checking for Vundle..."
-    if !empty(glob("~/.vim/bundle/Vundle.vim/README.md"))
-        echo "Vundle Exists! No actions needed."
-    else
+    if empty(glob("~/.vim/bundle/Vundle.vim/README.md"))
         echo "Vundle does not exist, attempting to clone from Git..."
         " Clone git repo in shell
         " If windows
@@ -23,7 +20,8 @@ function! GetVundle()
         else " If on unix
             !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
         endif
-        echo "Done! Run command [PluginInstall] to use your bundles!"
+        PluginInstall
+        echo "Done!"
     endif
 endfunction
 
@@ -54,6 +52,7 @@ Plugin 'shougo/neocomplete.vim'
 Plugin 'raimondi/delimitmate'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -127,3 +126,9 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 """ Delimitmate """
 let delimitMate_expand_cr = 1
 let delimitmate_Backspace = 1
+
+""" Solarized theme """
+if has("gui")
+    set background=dark
+    colorscheme solarized
+endif
