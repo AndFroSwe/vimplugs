@@ -20,8 +20,7 @@ function! GetVundle()
         else " If on unix
             !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
         endif
-        PluginInstall
-        echo "Done!"
+        echo "Done! Remember to run PluginInstall"
     endif
 endfunction
 
