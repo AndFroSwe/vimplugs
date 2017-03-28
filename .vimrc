@@ -40,7 +40,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'honza/vim-snippets'
-"Plugin 'SirVer/Ultisnips' " Comment this out if you intend to use utf8 encoding on a windows machine
+Plugin 'SirVer/Ultisnips' " Comment this out if you intend to use utf8 encoding on a windows machine
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
@@ -52,6 +52,8 @@ Plugin 'raimondi/delimitmate'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -127,7 +129,7 @@ let delimitMate_expand_cr = 1
 let delimitmate_Backspace = 1
 
 """ Solarized theme """
-if has("gui")
+if has("gui_running")
     set background=dark
     colorscheme solarized
 endif
